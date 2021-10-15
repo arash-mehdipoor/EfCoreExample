@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace CourseStore.Infra.Data.Sql
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Discount> DisCounts { get; set; }
         public DbSet<CourseTeacher> courseTeachers { get; set; }
+        public DbSet<Person> People { get; set; }
 
         public CourseDbContext(DbContextOptions options) : base(options)
         {
@@ -25,6 +27,17 @@ namespace CourseStore.Infra.Data.Sql
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            //suft Deleted
+            //modelBuilder.Entity<Course>().HasQueryFilter(x => x.IsDeleted == false);
+
+            // Exclude Entity From Migrations
+            //modelBuilder.Entity<Tag>().ToTable("Tags",t => t.ExcludeFromMigrations());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

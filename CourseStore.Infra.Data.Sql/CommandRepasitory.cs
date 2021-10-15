@@ -47,9 +47,42 @@ namespace CourseStore.Infra.Data.Sql
             {
                 Title = "Tag 2"
             };
-              Console.WriteLine($"state {ctx.Entry(tag2).State}");
+            Console.WriteLine($"state {ctx.Entry(tag2).State}");
 
-          
+
+        }
+
+        public static void UpdateCourseDisConected()
+        {
+            var ctx = ContextFactory.GetSqlDbContext();
+            var course = ctx.Courses.SingleOrDefault(x => x.Id == 1);
+            course.Title = "New Title Course";
+            ctx.SaveChanges();
+        }
+        public static void UpdateTagConected()
+        {
+            var ctx = ContextFactory.GetSqlDbContext();
+            var tag = new Tag()
+            {
+                Id = 1,
+                Title = "New Title"
+            };
+            ctx.Tags.Update(tag);
+            ctx.SaveChanges();
+        }
+
+        public static void Detched()
+        {
+            var ctx = ContextFactory.GetSqlDbContext();
+            var course = ctx.Courses.FirstOrDefault();
+
+            Console.WriteLine($"state {ctx.Entry(course).State}");
+
+            ctx.ChangeTracker.Clear();
+            ctx.ChangeTracker.Clear();
+            Console.WriteLine($"state {ctx.Entry(course).State}");
+
+
         }
     }
 }

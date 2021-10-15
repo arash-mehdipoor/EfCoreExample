@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourseStore.Infra.Data.Sql.Migrations
 {
     [DbContext(typeof(CourseDbContext))]
-    [Migration("20211014080136_init")]
-    partial class init
+    [Migration("20211015081455_Add-Person-Migration")]
+    partial class AddPersonMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -118,6 +118,24 @@ namespace CourseStore.Infra.Data.Sql.Migrations
                         .IsUnique();
 
                     b.ToTable("DisCounts");
+                });
+
+            modelBuilder.Entity("CourseStore.Core.Domain.Person", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("People");
                 });
 
             modelBuilder.Entity("CourseStore.Core.Domain.Tag", b =>

@@ -8,7 +8,7 @@ namespace CourseStore.Endpoints.CourseConsole
     {
         static void Main(string[] args)
         {
-            CommandRepasitory.CheckEntityState();
+            //QueryRepository.AddDefaultData();
 
             Console.WriteLine("__________");
             Console.ReadKey();
