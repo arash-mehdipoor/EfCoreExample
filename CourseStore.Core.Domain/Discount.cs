@@ -1,5 +1,8 @@
-﻿namespace CourseStore.Core.Domain
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CourseStore.Core.Domain
 {
+    //[NotMapped]
     public class Discount
     {
         public int Id { get; set; }

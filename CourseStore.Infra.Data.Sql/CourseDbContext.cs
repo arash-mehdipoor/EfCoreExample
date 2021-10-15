@@ -32,7 +32,10 @@ namespace CourseStore.Infra.Data.Sql
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            //suft Deleted
+            // Ignore Tag
+            //modelBuilder.Ignore<Tag>();
+
+            // suft Deleted
             //modelBuilder.Entity<Course>().HasQueryFilter(x => x.IsDeleted == false);
 
             // Exclude Entity From Migrations
