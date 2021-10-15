@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace CourseStore.Infra.Data.Sql.Config
 {
-    public class TagConfig : IEntityTypeConfiguration<Tag>
+    public class CourseConfig : IEntityTypeConfiguration<Course>
     {
-        public void Configure(EntityTypeBuilder<Tag> builder)
+        public void Configure(EntityTypeBuilder<Course> builder)
         {
-            builder.Property(t => t.Title).HasMaxLength(100).IsRequired();
-            //builder.Property(t => t.Title).UseCollation("");
-            //builder.Ignore(t => t.Title);
+            // Length - Decimal
+            //builder.Property(c => c.Price).HasPrecision(10, 2);
+            
         }
     }
 }
