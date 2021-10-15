@@ -12,7 +12,7 @@ namespace CourseStore.Core.Domain
         public string Title { get; set; }
         public int Price { get; set; }
         [Required]
-        [MaxLength(250,ErrorMessage =""]
+        [MaxLength(250,ErrorMessage ="")]
         public string Description { get; set; }
         public Discount Discount { get; set; }
         public List<Tag> Tags { get; set; }

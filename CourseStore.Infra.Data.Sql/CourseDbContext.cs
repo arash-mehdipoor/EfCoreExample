@@ -19,7 +19,8 @@ namespace CourseStore.Infra.Data.Sql
         public DbSet<Discount> DisCounts { get; set; }
         public DbSet<CourseTeacher> courseTeachers { get; set; }
         public DbSet<Person> People { get; set; }
-
+        public DbSet<PersonValueConvesion> PersonValueConvesions { get; set; }
+        
         public CourseDbContext(DbContextOptions options) : base(options)
         {
         }
