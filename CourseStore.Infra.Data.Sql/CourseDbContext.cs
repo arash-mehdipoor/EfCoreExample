@@ -57,6 +57,21 @@ namespace CourseStore.Infra.Data.Sql
 
             // Exclude Entity From Migrations
             //modelBuilder.Entity<Tag>().ToTable("Tags",t => t.ExcludeFromMigrations());
+
+
+            if (Database.IsSqlServer())
+            {
+                // Another Code
+            }
+            else
+            {
+
+            }
+            if (Database.IsRelational())
+            {
+
+            }
+
             base.OnModelCreating(modelBuilder);
         }
     }
