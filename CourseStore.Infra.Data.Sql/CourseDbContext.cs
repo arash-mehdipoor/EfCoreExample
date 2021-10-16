@@ -21,6 +21,7 @@ namespace CourseStore.Infra.Data.Sql
         public DbSet<Person> People { get; set; }
         public DbSet<PersonValueConvesion> PersonValueConvesions { get; set; }
         public DbSet<KeyLessEntity> keyLessEntities { get; set; }
+        public DbSet<Student> Students { get; set; }
         public CourseDbContext(DbContextOptions options) : base(options)
         {
         }
@@ -32,6 +33,7 @@ namespace CourseStore.Infra.Data.Sql
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            
 
             // Set Index For Feild
             //modelBuilder.Entity<Course>().HasIndex(c => c.Title);

@@ -15,11 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.EndPoint", "03.EndPoint"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseStore.Endpoints.CourseConsole", "CourseStore.Endpoints.CourseConsole\CourseStore.Endpoints.CourseConsole.csproj", "{0BC9FC95-6650-43A0-A48A-7B06EA2355EA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keys", "Keys", "{F70B100D-2649-4E3E-A06B-8322778189E4}"
-	ProjectSection(SolutionItems) = preProject
-		keys.txt = keys.txt
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
