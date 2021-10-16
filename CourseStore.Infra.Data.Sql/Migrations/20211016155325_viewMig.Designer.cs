@@ -4,14 +4,16 @@ using CourseStore.Infra.Data.Sql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CourseStore.Infra.Data.Sql.Migrations
 {
     [DbContext(typeof(CourseDbContext))]
-    partial class CourseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211016155325_viewMig")]
+    partial class viewMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,16 +137,18 @@ namespace CourseStore.Infra.Data.Sql.Migrations
             modelBuilder.Entity("CourseStore.Core.Domain.Person", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("People");
+                    b.HasIndex("FullName", "Id")
+                        .HasDatabaseName("name");
+
+                    b.ToView("vm_viewName");
                 });
 
             modelBuilder.Entity("CourseStore.Core.Domain.PersonValueConvesion", b =>

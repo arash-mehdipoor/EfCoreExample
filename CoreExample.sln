@@ -5,15 +5,20 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Core", "01.Core", "{892EA6BD-6CF0-436A-BDC7-36C1F3DC2CFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseStore.Core.Domain", "CourseStore.Core.Domain\CourseStore.Core.Domain.csproj", "{42B308F8-D546-49F2-834F-8BF505FBAE82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseStore.Core.Domain", "CourseStore.Core.Domain\CourseStore.Core.Domain.csproj", "{42B308F8-D546-49F2-834F-8BF505FBAE82}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Infra", "02. Infra", "{6893D9DB-C05C-47B6-9932-B1BD0D53560A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseStore.Infra.Data.Sql", "CourseStore.Infra.Data.Sql\CourseStore.Infra.Data.Sql.csproj", "{8AF5DFC6-735E-4FF9-82E2-6ACA641884B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseStore.Infra.Data.Sql", "CourseStore.Infra.Data.Sql\CourseStore.Infra.Data.Sql.csproj", "{8AF5DFC6-735E-4FF9-82E2-6ACA641884B2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.EndPoint", "03.EndPoint", "{E42F57BF-BDDD-4238-B53C-0A8FE7799111}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseStore.Endpoints.CourseConsole", "CourseStore.Endpoints.CourseConsole\CourseStore.Endpoints.CourseConsole.csproj", "{0BC9FC95-6650-43A0-A48A-7B06EA2355EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseStore.Endpoints.CourseConsole", "CourseStore.Endpoints.CourseConsole\CourseStore.Endpoints.CourseConsole.csproj", "{0BC9FC95-6650-43A0-A48A-7B06EA2355EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keys", "Keys", "{F70B100D-2649-4E3E-A06B-8322778189E4}"
+	ProjectSection(SolutionItems) = preProject
+		keys.txt = keys.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

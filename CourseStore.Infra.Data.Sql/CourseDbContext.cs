@@ -20,7 +20,7 @@ namespace CourseStore.Infra.Data.Sql
         public DbSet<CourseTeacher> courseTeachers { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<PersonValueConvesion> PersonValueConvesions { get; set; }
-        
+        public DbSet<KeyLessEntity> keyLessEntities { get; set; }
         public CourseDbContext(DbContextOptions options) : base(options)
         {
         }
@@ -32,6 +32,22 @@ namespace CourseStore.Infra.Data.Sql
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            // Set Index For Feild
+            //modelBuilder.Entity<Course>().HasIndex(c => c.Title);
+            //modelBuilder.Entity<Person>().HasIndex(c => new { c.FullName, c.Id });
+
+            //Set Name For Debug
+            //modelBuilder.Entity<Person>().HasIndex(c => new { c.FullName, c.Id }).HasName("name");
+
+            //Set View
+            //modelBuilder.Entity<KeyLessEntity>().ToView("vm_viewName");
+
+            // Sql Query For HasIndex
+            //modelBuilder.Entity<Person>().HasIndex(c => new { c.FullName, c.Id }).HasFilter("sql query");
+
+            // set Schema
+            //modelBuilder.HasDefaultSchema("con");
 
             // Ignore Tag
             //modelBuilder.Ignore<Tag>();

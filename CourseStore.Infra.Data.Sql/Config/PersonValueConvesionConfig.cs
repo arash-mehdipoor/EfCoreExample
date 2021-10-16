@@ -32,16 +32,16 @@ namespace CourseStore.Infra.Data.Sql.Config
             builder.Property(p => p.PersonType).HasConversion<string>();
 
             // Create Value Converter For NationalCode
-            var valueConverter = new ValueConverter<NationalCode, string>
-                (c => c.Value, s => new NationalCode(s));
-            builder.Property(n => n.NationalCode).HasConversion(valueConverter);
+           // var valueConverter = new ValueConverter<NationalCode, string>
+             //   (c => c.Value, s => new NationalCode(s));
+           // builder.Property(n => n.NationalCode).HasConversion(valueConverter);
 
             // SerializeObject DeserializeObject by HasConversion 
-            builder.Property(c => c.Name).HasConversion(c => JsonConvert.SerializeObject(c),
-                s => JsonConvert.DeserializeObject<PersonName>(s));
+           // builder.Property(c => c.Name).HasConversion(c => JsonConvert.SerializeObject(c),
+            //    s => JsonConvert.DeserializeObject<PersonName>(s));
 
 
-            builder.Property(c => c.Name).HasConversion(new EncryptedConverter());
+           // builder.Property(c => c.Name).HasConversion(new EncryptedConverter());
             
         }
     }

@@ -1,0 +1,7 @@
+
+// ساخت entity بدون id
+[keyless]
+
+// ساخت entity بدون id
+HasNokey
+
