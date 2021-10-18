@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.EndPoint", "03.EndPoint"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseStore.Endpoints.CourseConsole", "CourseStore.Endpoints.CourseConsole\CourseStore.Endpoints.CourseConsole.csproj", "{0BC9FC95-6650-43A0-A48A-7B06EA2355EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asp.NetCore5", "Asp.NetCore5\Asp.NetCore5.csproj", "{21A2A227-7073-4588-A1B0-12790BED94E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0BC9FC95-6650-43A0-A48A-7B06EA2355EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BC9FC95-6650-43A0-A48A-7B06EA2355EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BC9FC95-6650-43A0-A48A-7B06EA2355EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21A2A227-7073-4588-A1B0-12790BED94E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21A2A227-7073-4588-A1B0-12790BED94E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21A2A227-7073-4588-A1B0-12790BED94E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21A2A227-7073-4588-A1B0-12790BED94E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{42B308F8-D546-49F2-834F-8BF505FBAE82} = {892EA6BD-6CF0-436A-BDC7-36C1F3DC2CFD}
 		{8AF5DFC6-735E-4FF9-82E2-6ACA641884B2} = {6893D9DB-C05C-47B6-9932-B1BD0D53560A}
 		{0BC9FC95-6650-43A0-A48A-7B06EA2355EA} = {E42F57BF-BDDD-4238-B53C-0A8FE7799111}
+		{21A2A227-7073-4588-A1B0-12790BED94E7} = {E42F57BF-BDDD-4238-B53C-0A8FE7799111}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {620A8F03-1845-4B3A-A4CB-C2A05F566F4C}

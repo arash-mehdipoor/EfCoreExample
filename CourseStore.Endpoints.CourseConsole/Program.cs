@@ -4,6 +4,8 @@ using System.Linq;
 
 namespace CourseStore.Endpoints.CourseConsole
 {
+
+  
     class Program
     {
         static void Main(string[] args)
