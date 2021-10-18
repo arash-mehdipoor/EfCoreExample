@@ -1,3 +1,4 @@
+using Asp.NetCore5.factory;
 using Asp.NetCore5.Middleware;
 using Asp.NetCore5.Repasitory;
 using Microsoft.AspNetCore.Builder;
@@ -20,7 +21,17 @@ namespace Asp.NetCore5
         {
             //services.AddTransient<ITransient, Transient>();
             //services.AddScoped<ITransient, Transient>();
-            services.AddSingleton<ITransient, Transient>();
+            //services.AddSingleton<ITransient, Transient>();
+            //services.AddTransient(typeof(IList<>),typeof(List<>));
+            
+            var useDistribute = true;
+            services.AddScoped<ICashAdapter>(c =>
+            {
+                if (useDistribute)
+                    return new InDistributedCash();
+                return new InMemoryCach();
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,19 +41,19 @@ namespace Asp.NetCore5
             {
                 app.UseDeveloperExceptionPage();
             }
-          
+
 
             app.UseMiddleware<TransientMiddleware>();
-           // app.Use(async (httpContext, next) =>
-           //{
-           //    if (httpContext.Request.Query.ContainsKey("key"))
-           //    {
-           //        await httpContext.Response.WriteAsync("key write");
-           //    }
-           //    await next();
-           //});
+            // app.Use(async (httpContext, next) =>
+            //{
+            //    if (httpContext.Request.Query.ContainsKey("key"))
+            //    {
+            //        await httpContext.Response.WriteAsync("key write");
+            //    }
+            //    await next();
+            //});
             //app.UseMiddleware<RequestCultureMiddleware>();
-            
+
             //app.MapWhen(context => context.Request.Query.ContainsKey("mapwhen"), async c =>
             //{
             //    c.Use(async (context, next) =>
@@ -58,7 +69,7 @@ namespace Asp.NetCore5
             //    });
             //});
 
-           
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
