@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,7 +25,7 @@ namespace Asp.NetCore5
             //services.AddScoped<ITransient, Transient>();
             //services.AddSingleton<ITransient, Transient>();
             //services.AddTransient(typeof(IList<>),typeof(List<>));
-            
+
             var useDistribute = true;
             services.AddScoped<ICashAdapter>(c =>
             {
@@ -43,7 +45,7 @@ namespace Asp.NetCore5
             }
 
 
-            app.UseMiddleware<TransientMiddleware>();
+            //app.UseMiddleware<TransientMiddleware>();
             // app.Use(async (httpContext, next) =>
             //{
             //    if (httpContext.Request.Query.ContainsKey("key"))
@@ -69,6 +71,17 @@ namespace Asp.NetCore5
             //    });
             //});
 
+            app.UseStaticFiles();
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(env.WebRootPath, "statickFile")),
+            //    RequestPath = "/new"
+            //});
+            //app.UseStaticFiles(new StaticFileOptions()
+            //{
+            //    FileProvider = new PhysicalFileProvider($"{env.ContentRootPath}/statickFile"),
+            //    RequestPath = "/new"
+            //});
 
             app.UseRouting();
 
