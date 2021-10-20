@@ -52,6 +52,11 @@ namespace Asp.NetCore5
             {
                 c.Cookie.IsEssential = true;
             });
+
+            services.Configure<CookiePolicyOptions>(c =>
+            {
+                c.CheckConsentNeeded = context => true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
