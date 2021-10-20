@@ -26,13 +26,31 @@ namespace Asp.NetCore5
             //services.AddSingleton<ITransient, Transient>();
             //services.AddTransient(typeof(IList<>),typeof(List<>));
 
-            var useDistribute = true;
-            services.AddScoped<ICashAdapter>(c =>
-            {
-                if (useDistribute)
-                    return new InDistributedCash();
-                return new InMemoryCach();
+            //services.AddHttpsRedirection(opts =>
+            //{
+            //    opts.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+            //    opts.HttpsPort = 443;
+            //});
 
+            //services.AddHsts(c =>
+            //{
+            //    c.MaxAge = TimeSpan.FromDays(1);
+            //    c.IncludeSubDomains = true;
+            //});
+
+            //var useDistribute = true;
+            //services.AddScoped<ICashAdapter>(c =>
+            //{
+            //    if (useDistribute)
+            //        return new InDistributedCash();
+            //    return new InMemoryCach();
+
+            //});
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(c =>
+            {
+                c.Cookie.IsEssential = true;
             });
         }
 
@@ -71,7 +89,6 @@ namespace Asp.NetCore5
             //    });
             //});
 
-            app.UseStaticFiles();
             //app.UseStaticFiles(new StaticFileOptions
             //{
             //    FileProvider = new PhysicalFileProvider(Path.Combine(env.WebRootPath, "statickFile")),
@@ -83,6 +100,22 @@ namespace Asp.NetCore5
             //    RequestPath = "/new"
             //});
 
+            // Redirection Https
+            //app.UseHttpsRedirection();
+
+            // check https
+            //app.Use(async (context,next) => {
+
+            //    await context.Response.WriteAsync($"{context.Request.IsHttps}");
+            //    await next();
+            //});
+
+            //app.UseHsts();
+
+            //app.UseMiddleware<CookieMiddleWare>();
+            app.UseSession();
+            app.UseMiddleware<SessionTestMiddleWare>();
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
