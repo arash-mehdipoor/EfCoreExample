@@ -1,9 +1,11 @@
 using Asp.NetCore5.factory;
 using Asp.NetCore5.Middleware;
+using Asp.NetCore5.Option;
 using Asp.NetCore5.Repasitory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
@@ -17,6 +19,12 @@ namespace Asp.NetCore5
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
+        public Startup(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -47,21 +55,33 @@ namespace Asp.NetCore5
 
             //});
 
-            services.AddDistributedMemoryCache();
-            services.AddSession(c =>
-            {
-                c.Cookie.IsEssential = true;
-            });
+            //services.AddDistributedMemoryCache();
+            //services.AddSession(c =>
+            //{
+            //    c.Cookie.IsEssential = true;
+            //});
 
-            services.Configure<CookiePolicyOptions>(c =>
-            {
-                c.CheckConsentNeeded = context => true;
-            });
+            //services.Configure<CookiePolicyOptions>(c =>
+            //{
+            //    c.CheckConsentNeeded = context => true;
+            //});
+
+            var configuration1 = _configuration["ArashEnviromentVariable"];
+            var configuration2 = _configuration["ArashJsonEnviroment"];
+            var configuration3 = _configuration["UserSecretTestDate"];
+
+            var personalDataOptions = new PersonalDataOptions();
+
+            _configuration.GetSection("PersonalData").Bind(personalDataOptions);
+            services.AddSingleton(personalDataOptions);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, PersonalDataOptions personalDataOptions)
         {
+            var fName= personalDataOptions.FirstName;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -118,8 +138,8 @@ namespace Asp.NetCore5
             //app.UseHsts();
 
             //app.UseMiddleware<CookieMiddleWare>();
-            app.UseSession();
-            app.UseMiddleware<SessionTestMiddleWare>();
+            //app.UseSession();
+            //app.UseMiddleware<SessionTestMiddleWare>();
             app.UseStaticFiles();
             app.UseRouting();
 

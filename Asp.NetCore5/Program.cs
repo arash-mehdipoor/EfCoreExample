@@ -18,6 +18,14 @@ namespace Asp.NetCore5
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, configurationBuilder) =>
+            {
+                configurationBuilder.AddEnvironmentVariables();
+                configurationBuilder.AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json");
+                configurationBuilder.AddJsonFile($"Testappsettings.json");
+                if (hostingContext.HostingEnvironment.IsDevelopment())
+                    configurationBuilder.AddUserSecrets<Startup>();
+            })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
